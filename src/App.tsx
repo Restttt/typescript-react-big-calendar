@@ -31,7 +31,7 @@ const App: React.FC = () => {
 
   useEffect((): any => {
     axios.get('/api/getEvents').then(res => {
-      let newEvents: any = res.data.events.map((event: Event) => {
+      let newEvents: Array<Object> = res.data.events.map((event: Event) => {
         event.start = new Date(event.start);
         event.end = new Date(event.end)
         return event;
@@ -42,7 +42,7 @@ const App: React.FC = () => {
   
   function changeEventTime({ event, start, end }: any) {
 
-    const index: any = events.findIndex((calendarEvent: any) => {
+    const index: number = events.findIndex((calendarEvent: any) => {
       return calendarEvent.id === event.id
     });
 
